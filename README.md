@@ -91,6 +91,7 @@ Após seguir os passos de instalação, o backend estará disponível em `http:/
 
 ## Contatos
 ![img_1.png](img_1.png)
+![img_3.png](img_3.png)
 
 ## Cadastrar Novo Contato
 ![img_2.png](img_2.png)
