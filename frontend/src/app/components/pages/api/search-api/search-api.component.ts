@@ -12,7 +12,7 @@ interface NameAvailable {
 }
 
 @Component({
-    selector: 'busca-api',
+    selector: 'search-api',
     standalone: true,
     imports: [
         FormsModule,
@@ -23,38 +23,38 @@ interface NameAvailable {
         NgIf,
         AlertModule
     ],
-    templateUrl: './busca-api.component.html',
-    styleUrl: './busca-api.component.css'
+    templateUrl: './search-api.component.html',
+    styleUrl: './search-api.component.css'
 })
-export class BuscaApiComponent implements OnInit {
+export class SearchApiComponent implements OnInit {
 
-    nomes: NameAvailable[] = [];
-    busca = new FormControl('');
-    nomeSelecionado: string = '';
-    disponivelSelecionado!: boolean;
+    names: NameAvailable[] = [];
+    search = new FormControl('');
+    nameSelected: string = '';
+    availableSelected!: boolean;
     noResult = false
 
-    @Output() nomeSelecionadoChange = new EventEmitter<string>();
-    @Output() disponivelSelecionadoChange = new EventEmitter<string>();
+    @Output() nameSelectedChange = new EventEmitter<string>();
+    @Output() availableSelectedChange = new EventEmitter<string>();
     constructor(private apiHttp: ApiHttpService) {
     }
 
     ngOnInit(): void {
-        this.getNomes()
+        this.getNames()
     }
 
-    getNomes() {
-        this.apiHttp.getNomes().subscribe(response => {
-            this.nomes = response.Dados;
+    getNames() {
+        this.apiHttp.getNamesAPI().subscribe(response => {
+            this.names = response.Dados;
         });
     }
 
 
     selectName(nome: NameAvailable): void {
-        this.nomeSelecionado = nome.Nome;
-        this.disponivelSelecionado = nome.Disponivel;
+        this.nameSelected = nome.Nome;
+        this.availableSelected = nome.Disponivel;
         // @ts-ignore
-        this.nomeSelecionadoChange.emit(nome);
+        this.nameSelectedChange.emit(nome);
     }
 
     typeaheadNoResults(event: boolean): void {

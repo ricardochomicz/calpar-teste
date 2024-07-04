@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {DatePipe, NgForOf} from "@angular/common";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {User} from "../../../../models";
 import {UserHttpService} from "../../../../services/http/user-http.service";
 import {ModalComponent} from "../../../layout/modal/modal.component";
@@ -26,7 +26,8 @@ declare const $: any;
         UserEditComponent,
         NgxPaginationModule,
         UserSearchComponent,
-        TooltipModule
+        TooltipModule,
+        NgIf
     ],
     styleUrl: './user-list.component.css'
 })
@@ -36,6 +37,8 @@ export class UserListComponent implements OnInit{
 
     @ViewChild(UserEditComponent)
     userEdit!: UserEditComponent
+
+    loading: boolean = false
 
     // @ts-ignore
     userId: number;
@@ -63,6 +66,7 @@ export class UserListComponent implements OnInit{
     }
 
     getUsers() {
+        this.loading = true
         this.userHttp.list({
             page: this.pagination.page,
             search: this.searchText
@@ -71,6 +75,7 @@ export class UserListComponent implements OnInit{
                 this.users = response.data
                 this.pagination.totalItems = response.meta.total
                 this.pagination.itemsPerPage = response.meta.per_page
+                this.loading = false
             })
     }
 
@@ -83,5 +88,6 @@ export class UserListComponent implements OnInit{
         this.searchText = search;
         this.getUsers()
     }
+
 
 }

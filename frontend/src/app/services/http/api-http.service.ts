@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 
-interface NomeDisponivel {
+interface NameAvailable {
     Nome: string;
     Disponivel: boolean;
 }
@@ -17,7 +17,7 @@ export class ApiHttpService {
 
     constructor(private http: HttpClient) { }
 
-    getNomes(): Observable<{Dados: Array<NomeDisponivel>}> {
-        return this.http.get<{Dados: Array<NomeDisponivel>}>(this.apiUrl);
+    getNamesAPI(): Observable<{Dados: Array<NameAvailable>}> {
+        return this.http.get<{Dados: Array<NameAvailable>}>(this.apiUrl);
     }
 }

@@ -53,6 +53,7 @@ export class ContactNewComponent {
     }
 
     hideModal(event: any) {
+        this.contactForm.reset()
         this.modal.hide()
     }
 

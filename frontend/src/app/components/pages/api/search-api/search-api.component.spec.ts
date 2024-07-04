@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuscaApiComponent } from './busca-api.component';
+import { SearchApiComponent } from './search-api.component';
 
 describe('BuscaApiComponent', () => {
-  let component: BuscaApiComponent;
-  let fixture: ComponentFixture<BuscaApiComponent>;
+  let component: SearchApiComponent;
+  let fixture: ComponentFixture<SearchApiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BuscaApiComponent]
+      imports: [SearchApiComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BuscaApiComponent);
+    fixture = TestBed.createComponent(SearchApiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

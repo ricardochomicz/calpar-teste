@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {ModalComponent} from "../../../layout/modal/modal.component";
 import {HttpErrorResponse} from "@angular/common/http";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {UserHttpService} from "../../../../services/http/user-http.service";
 import {ContactHttpService} from "../../../../services/http/contact-http.service";
 import {UserFormComponent} from "../../users/user-form/user-form.component";
 import {ContactFormComponent} from "../contact-form/contact-form.component";

@@ -10,7 +10,7 @@
                              width="200px" alt="profile">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['name'].touched}" name="name" formControlName="name" id="name" aria-describedby="nameHelp"
+                        <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['name'].invalid && registerForm.controls['name'].dirty}" name="name" formControlName="name" id="name" aria-describedby="nameHelp"
                                placeholder="Seu nome" required>
                         <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched)"
                             class="invalid-feedback">
@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['email'].touched}" name="email" formControlName="email" id="email" aria-describedby="emailHelp"
+                        <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['email'].invalid && registerForm.controls['email'].dirty}" name="email" formControlName="email" id="email" aria-describedby="emailHelp"
                                placeholder="Seu e-mail" required>
                         <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
                              class="invalid-feedback">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['password'].touched}" formControlName="password" id="password" placeholder="Sua senha" required>
+                        <input type="password" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['password'].invalid && registerForm.controls['password'].dirty}" formControlName="password" id="password" placeholder="Sua senha" required>
                         <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
                              class="invalid-feedback">
                             <div *ngIf="registerForm.controls['password'].errors?.['required']">Informe uma senha</div>

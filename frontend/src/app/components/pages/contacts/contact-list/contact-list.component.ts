@@ -9,7 +9,7 @@ import {ContactHttpService} from "../../../../services/http/contact-http.service
 import {ContactInsertService} from "../contact-insert.service";
 import {ContactEditComponent} from "../contact-edit/contact-edit.component";
 import {ContactEditService} from "../contact-edit.service";
-import {DatePipe, NgClass, NgForOf} from "@angular/common";
+import {DatePipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {NgxPaginationModule} from "ngx-pagination";
 import {UserEditComponent} from "../../users/user-edit/user-edit.component";
 import {UserSearchComponent} from "../../users/user-search/user-search.component";
@@ -30,7 +30,8 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
         ContactEditComponent,
         ContactSearchComponent,
         TooltipModule,
-        NgClass
+        NgClass,
+        NgIf
     ],
     templateUrl: './contact-list.component.html',
     styleUrl: './contact-list.component.css'
@@ -43,6 +44,7 @@ export class ContactListComponent implements OnInit{
     @ViewChild(ContactEditComponent)
     contactEdit!: ContactEditComponent
 
+    loading: boolean = false
 
     // @ts-ignore
     contactId: number;
@@ -71,6 +73,7 @@ export class ContactListComponent implements OnInit{
     }
 
     getContacts() {
+        this.loading = true
         this.contactHttp.list({
             page: this.pagination.page,
             search: this.searchText
@@ -79,6 +82,7 @@ export class ContactListComponent implements OnInit{
                 this.contacts = response.data
                 this.pagination.totalItems = response.meta.total
                 this.pagination.itemsPerPage = response.meta.per_page
+                this.loading = false
             })
     }
 

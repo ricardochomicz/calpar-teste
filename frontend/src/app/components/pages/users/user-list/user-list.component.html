@@ -1,5 +1,11 @@
 <h5>Lista de Usuários</h5>
 <div class="card">
+    <div class="overlay" *ngIf="loading">
+        <div class="d-flex align-items-center">
+            <strong role="status"></strong>
+            <div class="spinner-border ms-auto ms-5" aria-hidden="true"></div>
+        </div>
+    </div>
 
     <div class="card-header">
 

@@ -5,8 +5,8 @@
     <input
         type="text"
         class="form-control"
-        [formControl]="busca"
-        [typeahead]="nomes"
+        [formControl]="search"
+        [typeahead]="names"
         typeaheadOptionField="Nome"
         (typeaheadOnSelect)="selectName($event.item)"
         (typeaheadNoResults)="typeaheadNoResults($event)"

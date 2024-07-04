@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgIf} from "@angular/common";
-import {BuscaApiComponent} from "../../api/busca-api/busca-api.component";
+import {SearchApiComponent} from "../../api/search-api/search-api.component";
 import {NgxMaskDirective} from "ngx-mask";
 
 @Component({
@@ -11,7 +11,7 @@ import {NgxMaskDirective} from "ngx-mask";
         NgIf,
         ReactiveFormsModule,
         NgClass,
-        BuscaApiComponent,
+        SearchApiComponent,
         NgxMaskDirective
     ],
   templateUrl: './contact-form.component.html',
@@ -31,7 +31,7 @@ export class ContactFormComponent {
         this.changeRef.detectChanges()
     }
 
-    nameSelect(event: any){
+    nameSelected(event: any){
         this.nameSelectedSearch = event.Nome
         this.availableSelected = event.Disponivel
         this.contactForm.get('name')?.setValue(event.Nome);
