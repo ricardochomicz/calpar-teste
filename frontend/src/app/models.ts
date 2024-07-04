@@ -10,8 +10,11 @@ export interface User{
 export interface Contact{
     id?: any
     name: string
+    phone?: string
     email?: string
     status?: boolean
     created_at?: string
     updated_at?: string
 }
+
+

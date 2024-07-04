@@ -7,6 +7,7 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptors
 import {provideToastr} from "ngx-toastr";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {authInterceptor} from "./services/auth.interceptor";
+import {provideEnvironmentNgxMask} from "ngx-mask";
 
 
 
@@ -27,6 +28,7 @@ export const appConfig: ApplicationConfig = {
           provideToastr({
               positionClass: 'toast-bottom-right',
           }),
+          provideEnvironmentNgxMask()
       ]
 };
 

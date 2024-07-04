@@ -1,0 +1,10 @@
+<form class="row g-3" (submit)="submit()">
+    <div class="col-auto">
+        <label for="inputSearch" class="visually-hidden">Password</label>
+        <input type="search" class="form-control" [(ngModel)]="search" name="search" id="inputSearch" placeholder="Buscar contato">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+    </div>
+</form>
+

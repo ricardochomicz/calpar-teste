@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('email');
-            $table->boolean('active')->default(true);
+            $table->string('phone')->nullable();
+            $table->boolean('status');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

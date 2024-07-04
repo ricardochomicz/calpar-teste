@@ -1,0 +1,12 @@
+<form [formGroup]="contactForm" (submit)="submit()">
+    <modal (onHide)="hideModal($event)">
+        <h5 modal-title>Novo Contato</h5>
+        <div modal-body>
+            <contact-form [contactForm]="contactForm"></contact-form>
+        </div>
+        <div modal-footer>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </modal>
+</form>

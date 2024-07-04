@@ -1,1 +1,57 @@
-<p>contact-list works!</p>
+<h5>Lista de Contatos</h5>
+<div class="card">
+
+    <div class="card-header">
+
+        <button class="btn btn-secondary float-end" (click)="contactInsertService.showModalInsert()">Novo Contato
+        </button>
+    </div>
+
+    <div class="card-body">
+        <contact-search (onSearch)="search($event)"></contact-search>
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th class="text-center">Disponível</th>
+                <th>Atualizado</th>
+                <th class="text-center">...</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contact of contacts | paginate: {itemsPerPage: pagination.itemsPerPage, currentPage: pagination.page, totalItems: pagination.totalItems}">
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td class="text-center">
+                    <span class="badge" [ngClass]="{'text-bg-success': contact.status, 'text-bg-danger': !contact.status}">
+                        {{ contact.status ? 'Disponível' : 'Não Disponível' }}
+                    </span>
+                </td>
+                <td>{{ contact.updated_at | date: 'dd/MM/yyyy' }}</td>
+                <td class="text-center">
+                    <a href="javascript:void(0)" (click)="contactEditService.showModalEdit(contact.id)"
+                       class="btn btn-primary" tooltip="Editar"><i class="fas fa-sync-alt"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="pagination pagination-sm justify-content-center">
+            <pagination-controls
+                previousLabel="Anterior"
+                nextLabel="Próximo" (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<contact-new (onSuccess)="contactInsertService.onInsertSuccess($event)"
+             (onError)="contactInsertService.onInsertError($event)"></contact-new>
+<contact-edit [contactId]="contactId" (onSuccess)="contactEditService.onEditSuccess($event)"
+              (onError)="contactEditService.onEditError($event)"></contact-edit>
+
+
+

@@ -10,6 +10,7 @@ import {UserEditService} from "../user-edit.service";
 import {NgxPaginationModule} from "ngx-pagination";
 import {AuthService} from "../../../../services/auth.service";
 import {UserSearchComponent} from "../user-search/user-search.component";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
 
 declare const $: any;
 @Component({
@@ -24,7 +25,8 @@ declare const $: any;
         DatePipe,
         UserEditComponent,
         NgxPaginationModule,
-        UserSearchComponent
+        UserSearchComponent,
+        TooltipModule
     ],
     styleUrl: './user-list.component.css'
 })

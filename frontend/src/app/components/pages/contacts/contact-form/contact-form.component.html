@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="contactForm">
+        <busca-api (nomeSelecionadoChange)="nameSelect($event)"></busca-api>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="contactForm">
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" formControlName="name" class="form-control" [ngClass]="{'is-invalid': contactForm.controls['name'].invalid && contactForm.controls['name'].dirty}">
+        <div *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)"
+             class="invalid-feedback">
+            <div *ngIf="contactForm.controls['name'].errors?.['required']">Informe um nome</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="contactForm">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email" formControlName="email" class="form-control" [readonly]="contactForm.controls['name'].invalid" [ngClass]="{'is-invalid': contactForm.controls['email'].invalid && contactForm.controls['email'].dirty}">
+        <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)"
+             class="invalid-feedback">
+            <div *ngIf="contactForm.controls['email'].errors?.['required']">Informe um e-mail</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="contactForm">
+        <label for="email">Telefone</label>
+        <input type="text" id="phone" mask="(00) 0000-0000||(00) 0 0000-0000" name="phone" formControlName="phone" class="form-control" [readonly]="contactForm.controls['name'].invalid">
+
+    </div>
+</div>
+<div class="row">
+    <div class="form-group mb-3" [formGroup]="contactForm">
+        <label>Disponível?</label>
+        <label class="switch ">
+            <input type="checkbox" class="primary module-checkbox" name="status"  formControlName="status"
+                   value="1">
+            <span class="slider round"></span>
+        </label>
+
+    </div>
+</div>

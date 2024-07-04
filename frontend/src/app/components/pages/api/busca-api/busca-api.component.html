@@ -1,0 +1,15 @@
+<div>
+    <alert type="danger" *ngIf="noResult">
+        <strong>Ops!</strong> Nenhum resultado encontrado...
+    </alert>
+    <input
+        type="text"
+        class="form-control"
+        [formControl]="busca"
+        [typeahead]="nomes"
+        typeaheadOptionField="Nome"
+        (typeaheadOnSelect)="selectName($event.item)"
+        (typeaheadNoResults)="typeaheadNoResults($event)"
+        placeholder="Buscar contato na API..."
+    />
+</div>
