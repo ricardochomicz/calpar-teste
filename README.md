@@ -86,5 +86,14 @@ Após seguir os passos de instalação, o backend estará disponível em `http:/
 ## Login
 ![image](https://github.com/ricardochomicz/calpar-teste/assets/58947372/ef183d90-171e-43cc-9326-41f2a2d16c00)
 
+## Usuários
+![img.png](img.png)
+
+## Contatos
+![img_1.png](img_1.png)
+
+## Cadastrar Novo Contato
+![img_2.png](img_2.png)
+
 
 
