@@ -71,11 +71,18 @@ export class UserListComponent implements OnInit{
             page: this.pagination.page,
             search: this.searchText
         })
-            .subscribe(response => {
-                this.users = response.data
-                this.pagination.totalItems = response.meta.total
-                this.pagination.itemsPerPage = response.meta.per_page
-                this.loading = false
+            .subscribe( {
+                next:((response) => {
+                    this.users = response.data
+                    this.pagination.totalItems = response.meta.total
+                    this.pagination.itemsPerPage = response.meta.per_page
+                    this.loading = false
+                }),
+                error:(() => {
+                    this.loading = false
+                })
+
+
             })
     }
 

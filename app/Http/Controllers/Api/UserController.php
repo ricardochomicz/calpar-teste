@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::filter($request->all())->paginate(1);
+        $users = User::where('id', auth()->user()->id)->filter($request->all())->paginate(1);
         return UserResource::collection($users);
     }
 
@@ -30,6 +30,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $user->where('id', auth()->user()->id);
         return new UserResource($user);
     }
 

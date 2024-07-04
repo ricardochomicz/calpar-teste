@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
     public function index(Request $request)
     {
-        $contacts = Contact::filter($request->all())->paginate(1);
+        $contacts = Contact::where('user_id', auth()->user()->id)->filter($request->all())->paginate(1);
         return ContactResource::collection($contacts);
     }
 

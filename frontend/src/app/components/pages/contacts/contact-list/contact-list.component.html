@@ -44,9 +44,14 @@
                        class="btn btn-primary" tooltip="Editar"><i class="fas fa-sync-alt"></i></a>
                 </td>
             </tr>
+            <tr>
+                <td class="text-center" colspan="7" *ngIf="contacts.length == 0">
+                    <small class="text-danger">Nenhum contato cadastrado.</small>
+                </td>
+            </tr>
             </tbody>
         </table>
-        <div class="pagination pagination-sm justify-content-center">
+        <div class="pagination pagination-sm justify-content-center" *ngIf="contacts.length > 0">
             <pagination-controls
                 previousLabel="Anterior"
                 nextLabel="Próximo" (pageChange)="pageChanged($event)"></pagination-controls>
