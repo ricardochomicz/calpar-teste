@@ -80,14 +80,11 @@ Este é um projeto de teste desenvolvido para a Calpar. O objetivo deste projeto
 
 Após seguir os passos de instalação, o backend estará disponível em `http://localhost:8000` e o frontend em `http://localhost:4200`.
 
-## Contribuição
+## Register
+![image](https://github.com/ricardochomicz/calpar-teste/assets/58947372/86ce019f-7c17-47ab-8a9f-73f3a8d33606)
 
-1. Faça um fork do projeto.
-2. Crie uma nova branch (`git checkout -b feature/nova-feature`).
-3. Faça commit das suas alterações (`git commit -am 'Adiciona nova feature'`).
-4. Faça push para a branch (`git push origin feature/nova-feature`).
-5. Crie um novo Pull Request.
+## Login
+![image](https://github.com/ricardochomicz/calpar-teste/assets/58947372/ef183d90-171e-43cc-9326-41f2a2d16c00)
 
-## Licença
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
