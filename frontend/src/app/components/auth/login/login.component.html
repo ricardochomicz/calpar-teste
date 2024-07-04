@@ -3,22 +3,33 @@
         <div class="col-md-6 offset-md-3">
             <div class="card">
 
-                <form class="card-body cardbody-color p-lg-5" [formGroup]="loginForm" (submit)="login()">
 
+                <form class="card-body cardbody-color p-lg-5" [formGroup]="loginForm" (submit)="login()">
+                    <alert type="danger" *ngIf="msgErroLogin">
+                        <strong>Ops!</strong> {{ msgErroLogin }}
+                    </alert>
                     <div class="text-center">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_IbEAmJkU9W7HnhWQkEhcGe2kr6ePt7rADjQjnBHiXoMNjPMOhSBvD-92tPSvF5g03o&usqp=CAU" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
                              width="200px" alt="profile">
                     </div>
 
                     <div class="mb-3">
-                        <input type="text" class="form-control" formControlName="email" name="email" id="Username" aria-describedby="emailHelp"
-                               placeholder="Seu e-mail">
+                        <input type="text" class="form-control" [ngClass]="{'is-invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].dirty}" formControlName="email" name="email" id="Username" aria-describedby="emailHelp"
+                               placeholder="Seu e-mail" required>
+                        <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
+                             class="invalid-feedback">
+                            <div *ngIf="loginForm.controls['email'].errors?.['required']">Informe seu e-mail.</div>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" formControlName="password" name="password" id="password" placeholder="Sua senha">
+                        <input type="password" class="form-control" [ngClass]="{'is-invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].dirty}" formControlName="password" name="password" id="password" placeholder="Sua senha" required>
+                        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+                             class="invalid-feedback">
+                            <div *ngIf="loginForm.controls['password'].errors?.['required']">Informe sua senha.</div>
+                        </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-color px-5 mb-5 w-100">Login</button>
+                        <button type="submit" class="btn btn-color px-5 mb-5 w-100" [disabled]="!loginForm.valid">Login</button>
                     </div>
                     <div class="d-flex align-items-center" *ngIf="loading">
                         <strong role="status">Aguarde...</strong>

@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {Router, RouterLink} from "@angular/router";
-import {NgIf} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
+import {AlertModule} from "ngx-bootstrap/alert";
 
 @Component({
     selector: 'app-login',
@@ -12,7 +13,9 @@ import {NgIf} from "@angular/common";
         FormsModule,
         RouterLink,
         ReactiveFormsModule,
-        NgIf
+        NgIf,
+        AlertModule,
+        NgClass
     ],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
@@ -20,8 +23,9 @@ import {NgIf} from "@angular/common";
 export class LoginComponent {
 
     loading: boolean = false;
+    msgErroLogin!: string;
 
-    loginForm = new FormGroup({
+    loginForm: FormGroup = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
@@ -31,7 +35,6 @@ export class LoginComponent {
 
     login() {
         this.loading = true;
-        // @ts-ignore
         this.authService.login(this.loginForm.value)
             .subscribe({
                 next: ((response) => {
@@ -39,6 +42,11 @@ export class LoginComponent {
                     this.router.navigate(['users'])
                     this.loading = false;
                 }),
+                error:((err) => {
+                    console.log(err.error.error)
+                    this.msgErroLogin = err.error.error
+                    this.loading = false;
+                })
 
 
             })
