@@ -1,0 +1,41 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+    <modal (onHide)="hideModal($event)">
+        <h5 modal-title>Novo Usuário</h5>
+        <div modal-body>
+            <div class="row">
+                <div class="form-group col-sm-12 mb-3">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" formControlName="name"  class="form-control" [ngClass]="{'is-invalid': userForm.controls['name'].invalid && userForm.controls['name'].dirty}">
+                    <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)"
+                         class="invalid-feedback">
+                        <div *ngIf="userForm.controls['name'].errors?.['required']">Informe uma senha</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12 mb-3">
+                    <label for="name">E-mail</label>
+                    <input type="text" id="email" name="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid': userForm.controls['email'].invalid && userForm.controls['email'].dirty}">
+                    <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)"
+                         class="invalid-feedback">
+                        <div *ngIf="userForm.controls['email'].errors?.['required']">Informe um e-mail</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12 mb-3">
+                    <label for="password">Senha</label>
+                    <input type="text" id="password" name="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': userForm.controls['password'].invalid && userForm.controls['password'].dirty}">
+                    <div *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)"
+                         class="invalid-feedback">
+                        <div *ngIf="userForm.controls['password'].errors?.['required']">Informe uma senha</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div modal-footer>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Salvar</button>
+        </div>
+    </modal>
+</form>

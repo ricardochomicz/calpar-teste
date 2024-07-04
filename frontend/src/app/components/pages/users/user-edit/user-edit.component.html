@@ -1,0 +1,13 @@
+<form [formGroup]="userForm" (submit)="submit()">
+    <modal (onHide)="hideModal($event)">
+        <h5 modal-title>Editar Usuário {{userForm.get('name')?.value}}</h5>
+        <div modal-body>
+            <user-form [userForm]="userForm"></user-form>
+        </div>
+        <div modal-footer>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </modal>
+</form>
+

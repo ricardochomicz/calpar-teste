@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+
+                <form class="card-body cardbody-color p-lg-5" [formGroup]="registerForm" (ngSubmit)="register()">
+
+                    <div class="text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_IbEAmJkU9W7HnhWQkEhcGe2kr6ePt7rADjQjnBHiXoMNjPMOhSBvD-92tPSvF5g03o&usqp=CAU" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                             width="200px" alt="profile">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['name'].touched}" name="name" formControlName="name" id="name" aria-describedby="nameHelp"
+                               placeholder="Seu nome" required>
+                        <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched)"
+                            class="invalid-feedback">
+                            <div *ngIf="registerForm.controls['name'].errors?.['required']">Informe seu nome</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['email'].touched}" name="email" formControlName="email" id="email" aria-describedby="emailHelp"
+                               placeholder="Seu e-mail" required>
+                        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
+                             class="invalid-feedback">
+                            <div *ngIf="registerForm.controls['email'].errors?.['required']">Informe seu e-mail</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" [ngClass]="{'is-invalid': registerForm.controls['password'].touched}" formControlName="password" id="password" placeholder="Sua senha" required>
+                        <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+                             class="invalid-feedback">
+                            <div *ngIf="registerForm.controls['password'].errors?.['required']">Informe uma senha</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-color px-5 mb-5 w-100" [disabled]="!registerForm.valid">Registrar</button>
+                    </div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">Já possui conta?
+                        <a [routerLink]="['/login']" class="text-dark fw-bold"> Login</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+

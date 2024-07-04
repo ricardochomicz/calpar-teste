@@ -1,0 +1,46 @@
+<h5>Lista de Usuários</h5>
+<div class="card">
+
+    <div class="card-header">
+
+        <button class="btn btn-secondary float-end" (click)="userInsertService.showModalInsert()">Novo Usuário</button>
+    </div>
+
+    <div class="card-body">
+        <user-search (onSearch)="search($event)"></user-search>
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Atualizado</th>
+                <th class="text-center">...</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users | paginate: {itemsPerPage: pagination.itemsPerPage, currentPage: pagination.page, totalItems: pagination.totalItems}">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.updated_at | date: 'dd/MM/yyyy'}}</td>
+                <td class="text-center">
+                    <a href="javascript:void(0)" (click)="userEditService.showModalEdit(user.id)" class="btn btn-primary"><i class="fas fa-sync-alt"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="pagination pagination-sm justify-content-center">
+        <pagination-controls
+            previousLabel="Anterior"
+            nextLabel="Próximo" (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<user-new (onSuccess)="userInsertService.onInsertSuccess($event)"
+          (onError)="userInsertService.onInsertError($event)"></user-new>
+<user-edit [userId]="userId" (onSuccess)="userEditService.onEditSuccess($event)"
+           (onError)="userEditService.onEditError($event)"></user-edit>
+
+

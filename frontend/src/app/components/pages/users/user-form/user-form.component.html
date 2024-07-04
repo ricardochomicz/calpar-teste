@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="userForm">
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" formControlName="name" class="form-control" [ngClass]="{'is-invalid': userForm.controls['name'].invalid && userForm.controls['name'].dirty}">
+        <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)"
+             class="invalid-feedback">
+            <div *ngIf="userForm.controls['name'].errors?.['required']">Informe um nome</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="userForm">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid': userForm.controls['email'].invalid && userForm.controls['email'].dirty}">
+        <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)"
+             class="invalid-feedback">
+            <div *ngIf="userForm.controls['email'].errors?.['required']">Informe um e-mail</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-12 mb-3" [formGroup]="userForm">
+        <label for="password">Senha</label>
+        <input type="text" id="password" formControlName="password" class="form-control">
+    </div>
+</div>
