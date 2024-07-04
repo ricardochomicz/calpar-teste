@@ -15,6 +15,8 @@ import {UserEditComponent} from "../../users/user-edit/user-edit.component";
 import {UserSearchComponent} from "../../users/user-search/user-search.component";
 import {ContactSearchComponent} from "../contact-search/contact-search.component";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
+import {ContactDeleteComponent} from "../contact-delete/contact-delete.component";
+import {ContactDeleteService} from "../contact-delete.service";
 
 @Component({
     selector: 'contact-list',
@@ -31,7 +33,8 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
         ContactSearchComponent,
         TooltipModule,
         NgClass,
-        NgIf
+        NgIf,
+        ContactDeleteComponent
     ],
     templateUrl: './contact-list.component.html',
     styleUrl: './contact-list.component.css'
@@ -43,6 +46,9 @@ export class ContactListComponent implements OnInit{
 
     @ViewChild(ContactEditComponent)
     contactEdit!: ContactEditComponent
+
+    @ViewChild(ContactDeleteComponent)
+    contactDelete!: ContactDeleteComponent
 
     loading: boolean = false
 
@@ -63,9 +69,11 @@ export class ContactListComponent implements OnInit{
     constructor(
         private contactHttp: ContactHttpService,
         public contactInsertService: ContactInsertService,
-        public contactEditService: ContactEditService) {
+        public contactEditService: ContactEditService,
+        public contactDeleteService: ContactDeleteService) {
         this.contactInsertService.contactListComponent = this;
         this.contactEditService.contactListComponent = this;
+        this.contactDeleteService.contactListComponent = this;
     }
 
     ngOnInit() {

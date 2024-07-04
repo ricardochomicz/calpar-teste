@@ -41,7 +41,8 @@
                 <td>{{ contact.updated_at | date: 'dd/MM/yyyy' }}</td>
                 <td class="text-center">
                     <a href="javascript:void(0)" (click)="contactEditService.showModalEdit(contact.id)"
-                       class="btn btn-primary" tooltip="Editar"><i class="fas fa-sync-alt"></i></a>
+                       class="btn btn-primary me-1" tooltip="Editar"><i class="fas fa-sync-alt"></i></a>
+                    <a href="javascript:void(0)" (click)="contactDeleteService.showModalDelete(contact.id)" class="btn btn-danger" tooltip="Excluir"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
             <tr>
@@ -63,6 +64,8 @@
              (onError)="contactInsertService.onInsertError($event)"></contact-new>
 <contact-edit [contactId]="contactId" (onSuccess)="contactEditService.onEditSuccess($event)"
               (onError)="contactEditService.onEditError($event)"></contact-edit>
+<contact-delete [contactId]="contactId" (onSuccess)="contactDeleteService.onDeleteSuccess($event)"
+              (onError)="contactDeleteService.onDeleteError($event)"></contact-delete>
 
 
 
